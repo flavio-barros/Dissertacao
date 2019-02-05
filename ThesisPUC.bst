@@ -298,7 +298,7 @@ FUNCTION {either.or.check}
 FUNCTION {format.bvolume}
 { volume empty$
     { "" }
-    { "volumen" volume tie.or.space.connect
+    { "volume" volume tie.or.space.connect
       series empty$
         'skip$
         { " de " * series emphasize * }

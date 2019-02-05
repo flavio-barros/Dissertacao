@@ -1,0 +1,36 @@
+% -*- coding: utf-8; -*-
+
+\chapter{Provas Formais}
+
+Este capítulo apresenta os principais conceitos relacionados às provas formais.
+
+\section{Provas Formais \textit{vs} Provas Informais}
+\label{SEC:2.1-ProvasForInf}
+
+Segundo o dicionário \textit{Michaelis} da língua portuguesa, uma \textit{prova} é "aquilo que demonstra a veracidade de uma afirmação ou de um fato; confirmação, comprovação, evidência". Na matemática, as provas são utilizadas para certificar e comunicar o conhecimento entre especialistas. Provas matemáticas existem desde a Grécia antiga, no entanto, sua forma e organização mudaram bastante ao longo do tempo.
+
+O conceito de prova formal foi gradualmente construído entre o final do século XIX e o início do século XX, o estilo de prova matemática que era exclusivamente utilizado antes desse período é chamado aqui de \textit{prova informal}. Uma prova informal é expressa em linguagem natural e, possivelmente, contém símbolos e figuras \cite{HandBookPT}. Esse tipo de prova tem o objetivo de convencer o leitor que a proposição matemática em questão é verdadeira ou falsa através da exposição de uma sequência de argumentos intuitivamente encadeados. Normalmente, para facilitar a compreensão, algumas informações básicas e passos óbvios de raciocínio não são adicionados à prova, o que pode deixar algumas lacunas na argumentação.
+
+No final do século XIX iniciou-se um movimento entre alguns matemáticos, conhecido como \textit{logicismo}, com o objetivo de solidificar os fundamentos da matemática através da lógica. A forma como o conhecimento matemático era construído e repassado já estava bem estabelecida, e até então havia se mostrada eficiente através da prática matemática. No entanto, as provas informais eram passíveis a erros, que poderiam ser propagados caso não fossem identificados. Uma solução desejável para esse problema seria um método para construir e especificar provas que, por definição, admita um processo de checagem mecânica \cite{marfori2010}.
+
+Uma das primeiras e mais importantes contribuições ao logicismo foi dada pelo matemático, lógico e filósofo alemão Gottlob Frege (1948 - 1925), que em 1879 publicou o livro \textit{Begriffsschrift} --- \textit{escrita conceitual}, \textit{conceitografia} --- que é considerado como um dos principais precursores da lógica moderna. Frege tinha o objetivo de especificar os fundamentos da aritmética por meios puramente lógicos, no entanto, logo percebeu que a linguagem natural era um problema, pois apresentava importantes imperfeições que demandavam bastante intuição \cite{Frege2018}. Esse problema, observado por Frege como inerente à linguagem natural, foi uma das principais motivações para a produção do \textit{Begriffsschrift}. Nesse livro, Frege introduz uma linguagem baseada puramente em fórmulas (a \textit{conceitografia}), que possui suas sentenças e regras definidas de forma clara e precisa.
+
+A conceitografia possui símbolos básicos representando a \textit{implicação} e a \textit{negação}, e ainda, possui representações de quantificação universal e existencial (Tabela \ref{tab:frege}). A conceitografia é considerada como a primeira linguagem formal, que possui o sistema dedutivo composto por nove axiomas e uma regra de inferência. O sistema dedutivo (axiomático) de Frege tem como princípios que: axiomas expressam verdades lógicas básicas; outras verdades são derivadas dos axiomas através da regra de inferência \textit{modus ponens} \cite{SEP-ProofTheory}. Provas construídas construídas com termos (fórmulas) de uma linguagem formal e seguindo regras de um sistema dedutivo são chamadas de \textit{provas formais}.
+
+\input{tables/table-2.1.tex}
+
+Após a publicação do \textit{Begriffsschrift}, Frege continuou se dedicando ao objetivo de formalizar a aritmética por meios puramente lógicos. Em 1893, publica o primeiro de dois volumes do \textit{Grundgesetze der Arithmetik} --- \textit{Leis Básicas da Aritmética} --- onde define cinco Leis Básicas (I, II, III, IV, V) para a aritmética desde refinamentos do \textit{Begriffsschrift}, com exceção da Lei V, onde Frege introduz a noção de \textit{extensão de um conceito} \cite{SEP-Logicism}. Em notação moderna de segunda ordem, a Lei Básica V pode ser expressa da seguinte maneira: $$ \forall{F}\forall{G} [\hat{x}(Fx) = \hat{x}(Gx) \leftrightarrow \forall{x}(Fx \leftrightarrow Gx)] $$ tomando $\hat{x}(Fx)$ como "a extensão do conceito de F", a Lei V afirma que, para todo conceito $F$ e $G$, a extensão do conceito de $F$ é a mesma que de $G$, se e somente se, $F$ e $G$ coincidem sobre os mesmos objetos $x$ \cite{HECK1996}.
+
+Nas vésperas do lançamento do segundo volume do \textit{Grundgesetze der Arithmetik}, em 1902, Frege recebe uma carta do matemático e filósofo britânico Bertrand  Russel (1872 - 1970). Nessa carta, Russel comunica a Frege a descoberta de um problema com as Leis Básicas do primeiro volume, tal problema viria a ser conhecido como o \textit{Paradoxo de Russel}. (Explicação da derivação do paradoxo a partir da lei V).
+
+Com a descoberta que a teoria desenvolvida por Frege é inconsistente através do Paradoxo de Russel, o logicismo necessitava de mais aparato teórico para atingir seu objetivo. Pelos anos seguintes Russel se dedicou a encontrar uma solução para o paradoxo, que inicialmente, julgava ser simples, no entanto, só chegou a uma solução em 1908 através da Teoria dos Tipos em \textit{Mathematical Logic as Based on the Theory of Types}. Nesse processo, Russel começou a colaborar com seu ex-professor Alfred North Whitehead (1861 - 1947). O resultado dessa colaboração foi a publicação dos três volumes do \textit{Principia Mathematica}, respectivamente, em 1910, 1912 e 1913.
+
+O \textit{Principia Mathematica} é a obra mais ambiciosa e importante do logicismo, Russel e Whitehead ansiavam reduzir toda a matemática à lógica. Apesar de compartilhar a mesma motivação filosófica sobre o logicismo com Frege, Russel utilizou no \textit{Principia} e em trabalhos anteriores uma notação próxima à utilizada em 1989 pelo matemático italiano Guiseppe Peano (1958 - 1932) no \textit{Arithmetices principia, nova methodo exposita}.
+
+\section{Linguagens Formais}
+
+\section{Sistemas Dedutivos}
+
+\section{Organização das Provas Formais}
+
+\section{Provas Formais e Complexidade Computacional}
