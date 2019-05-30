@@ -1,36 +1,306 @@
 % -*- coding: utf-8; -*-
 
 \chapter{Provas Formais}
+\label{cap:prov_form}
 
-Este capítulo apresenta os principais conceitos relacionados às provas formais.
+Este capítulo apresenta os principais conceitos relacionados às provas formais utilizados no trabalho. A Seção \ref{sec:provas_formais_informais} apresenta um resumo histórico do surgimento das provas formais desde Frege até a criação da dedução natural por Gentzen. A Seção \ref{sec:logica_proposicional_intuicionista} apresenta a lógica proposicional minimal, detalhando sua linguagem, sistema dedutivo de dedução natural e semântica. A Seção \ref{sec:estilos_prova} apresenta os dois principais estilos de representação de provas em dedução natural propostos por Gentzen e Ja{\'s}kowski.
 
 \section{Provas Formais \textit{vs} Provas Informais}
-\label{SEC:2.1-ProvasForInf}
+\label{sec:provas_formais_informais}
 
-Segundo o dicionário \textit{Michaelis} da língua portuguesa, uma \textit{prova} é "aquilo que demonstra a veracidade de uma afirmação ou de um fato; confirmação, comprovação, evidência". Na matemática, as provas são utilizadas para certificar e comunicar o conhecimento entre especialistas. Provas matemáticas existem desde a Grécia antiga, no entanto, sua forma e organização mudaram bastante ao longo do tempo.
+Segundo o dicionário \textit{Michaelis} da língua portuguesa, uma \textit{prova} é ``aquilo que demonstra a veracidade de uma afirmação ou de um fato; confirmação, comprovação, evidência''. Na matemática, as provas são utilizadas para certificar e comunicar o conhecimento entre especialistas. Provas matemáticas existem desde a Grécia antiga, no entanto, sua forma e organização mudaram bastante ao longo do tempo.
 
-O conceito de prova formal foi gradualmente construído entre o final do século XIX e o início do século XX, o estilo de prova matemática que era exclusivamente utilizado antes desse período é chamado aqui de \textit{prova informal}. Uma prova informal é expressa em linguagem natural e, possivelmente, contém símbolos e figuras \cite{HandBookPT}. Esse tipo de prova tem o objetivo de convencer o leitor que a proposição matemática em questão é verdadeira ou falsa através da exposição de uma sequência de argumentos intuitivamente encadeados. Normalmente, para facilitar a compreensão, algumas informações básicas e passos óbvios de raciocínio não são adicionados à prova, o que pode deixar algumas lacunas na argumentação.
+O conceito de prova formal foi gradualmente construído entre o final do século XIX e o início do século XX, as provas matemáticas utilizadas antes desse período são chamadas aqui de \textit{provas informais}. Uma prova informal é expressa em linguagem natural e, possivelmente, contém símbolos e figuras \cite{HandBookPT}. Esse tipo de prova tem o objetivo de convencer o leitor que a proposição matemática em questão é verdadeira ou falsa através da exposição de uma sequência de argumentos encadeados. Normalmente, para facilitar a compreensão, algumas informações básicas e passos óbvios de raciocínio não são adicionados à prova, o que pode deixar algumas lacunas na argumentação. No restante do texto, o termo ``prova'' será sempre utilizado em referência à prova formal.
 
 No final do século XIX iniciou-se um movimento entre alguns matemáticos, conhecido como \textit{logicismo}, com o objetivo de solidificar os fundamentos da matemática através da lógica. A forma como o conhecimento matemático era construído e repassado já estava bem estabelecida, e até então havia se mostrada eficiente através da prática matemática. No entanto, as provas informais eram passíveis a erros, que poderiam ser propagados caso não fossem identificados. Uma solução desejável para esse problema seria um método para construir e especificar provas que, por definição, admita um processo de checagem mecânica \cite{marfori2010}.
 
-Uma das primeiras e mais importantes contribuições ao logicismo foi dada pelo matemático, lógico e filósofo alemão Gottlob Frege (1948 - 1925), que em 1879 publicou o livro \textit{Begriffsschrift} --- \textit{escrita conceitual}, \textit{conceitografia} --- que é considerado como um dos principais precursores da lógica moderna. Frege tinha o objetivo de especificar os fundamentos da aritmética por meios puramente lógicos, no entanto, logo percebeu que a linguagem natural era um problema, pois apresentava importantes imperfeições que demandavam bastante intuição \cite{Frege2018}. Esse problema, observado por Frege como inerente à linguagem natural, foi uma das principais motivações para a produção do \textit{Begriffsschrift}. Nesse livro, Frege introduz uma linguagem baseada puramente em fórmulas (a \textit{conceitografia}), que possui suas sentenças e regras definidas de forma clara e precisa.
+Uma das primeiras e mais importantes contribuições ao logicismo foi realizada pelo matemático, lógico e filósofo alemão Gottlob Frege (1848 - 1925), que em 1879 publicou o livro \textit{Begriffsschrift} --- \textit{escrita conceitual}, \textit{conceitografia} --- considerado um dos principais precursores da lógica moderna. Com o objetivo de fundamentar a aritmética por meios puramente lógicos, Frege percebeu que a linguagem natural não era adequada, pois apresentava importantes imperfeições que a limitavam na tarefa de expressar conceitos matemáticos com exatidão e clareza \cite{Frege2018}. Esse problema, observado por Frege como inerente à linguagem natural, foi uma das principais motivações para a produção do \textit{Begriffsschrift}, onde Frege introduz uma linguagem baseada puramente em fórmulas (a \textit{conceitografia}), que possui suas sentenças e regras definidas de forma clara e precisa.
 
-A conceitografia possui símbolos básicos representando a \textit{implicação} e a \textit{negação}, e ainda, possui representações de quantificação universal e existencial (Tabela \ref{tab:frege}). A conceitografia é considerada como a primeira linguagem formal, que possui o sistema dedutivo composto por nove axiomas e uma regra de inferência. O sistema dedutivo (axiomático) de Frege tem como princípios que: axiomas expressam verdades lógicas básicas; outras verdades são derivadas dos axiomas através da regra de inferência \textit{modus ponens} \cite{SEP-ProofTheory}. Provas construídas construídas com termos (fórmulas) de uma linguagem formal e seguindo regras de um sistema dedutivo são chamadas de \textit{provas formais}.
+A conceitografia possui símbolos básicos representando a \textit{implicação} e a \textit{negação}, e ainda, possui representações de quantificação universal e existencial (Tabela \ref{tab:frege}). Considerada como a primeira linguagem formal, a conceitografia possui um sistema dedutivo composto por nove axiomas e uma regra de inferência. O sistema dedutivo (axiomático) de Frege tem como princípios que: axiomas expressam verdades lógicas básicas; outras verdades são derivadas dos axiomas através da regra de inferência \textit{modus ponens} \cite{SEP-ProofTheory}. Provas construídas construídas com termos (fórmulas) de uma linguagem formal e seguindo regras de um sistema dedutivo são chamadas de \textit{provas formais}.
 
 \input{tables/table-2.1.tex}
 
-Após a publicação do \textit{Begriffsschrift}, Frege continuou se dedicando ao objetivo de formalizar a aritmética por meios puramente lógicos. Em 1893, publica o primeiro de dois volumes do \textit{Grundgesetze der Arithmetik} --- \textit{Leis Básicas da Aritmética} --- onde define cinco Leis Básicas (I, II, III, IV, V) para a aritmética desde refinamentos do \textit{Begriffsschrift}, com exceção da Lei V, onde Frege introduz a noção de \textit{extensão de um conceito} \cite{SEP-Logicism}. Em notação moderna de segunda ordem, a Lei Básica V pode ser expressa da seguinte maneira: $$ \forall{F}\forall{G} [\hat{x}(Fx) = \hat{x}(Gx) \leftrightarrow \forall{x}(Fx \leftrightarrow Gx)] $$ tomando $\hat{x}(Fx)$ como "a extensão do conceito de F", a Lei V afirma que, para todo conceito $F$ e $G$, a extensão do conceito de $F$ é a mesma que de $G$, se e somente se, $F$ e $G$ coincidem sobre os mesmos objetos $x$ \cite{HECK1996}.
+Após a publicação do \textit{Begriffsschrift}, Frege continuou se dedicando ao objetivo de formalizar a aritmética por meios puramente lógicos. Em 1893, publicou o primeiro de dois volumes do \textit{Grundgesetze der Arithmetik} --- \textit{Leis Básicas da Aritmética} --- onde define cinco Leis Básicas (I, II, III, IV, V) originadas a partir de refinamentos do \textit{Begriffsschrift}, exceto pela Lei V, que introduz a noção de \textit{extensão de um conceito}. Nas vésperas do lançamento do segundo volume, em 1902, Frege recebeu uma carta do matemático e filósofo britânico Bertrand  Russel (1872 - 1970) comunicando a descoberta de um problema com as Leis Básicas do primeiro volume. A partir da Lei V, Russel conseguiu obter uma contradição, tornando a teoria do \textit{Grundgesetze der Arithmetik} inconsistente. Os detalhes da descoberta desse problema, que ficou conhecido como o \textit{paradoxo de Russel}, foram publicados por Russel no livro \textit{The Principles of Mathematics} em 1903.
 
-Nas vésperas do lançamento do segundo volume do \textit{Grundgesetze der Arithmetik}, em 1902, Frege recebe uma carta do matemático e filósofo britânico Bertrand  Russel (1872 - 1970). Nessa carta, Russel comunica a Frege a descoberta de um problema com as Leis Básicas do primeiro volume, tal problema viria a ser conhecido como o \textit{Paradoxo de Russel}. (Explicação da derivação do paradoxo a partir da lei V).
+Com a descoberta que a teoria desenvolvida por Frege é inconsistente, o logicismo necessitava de mais aparato teórico para atingir seu objetivo. Pelos anos seguintes Russel se dedicou a encontrar uma solução para o paradoxo, que inicialmente julgava ser simples, no entanto, só chegou a uma solução em 1908 através da Teoria dos Tipos em \textit{Mathematical Logic as Based on the Theory of Types}. Durante esse período, Russel começou a colaborar com seu ex-professor Alfred North Whitehead (1861 - 1947). O resultado dessa colaboração foi a publicação dos três volumes do \textit{Principia Mathematica}, respectivamente, em 1910, 1912 e 1913.
 
-Com a descoberta que a teoria desenvolvida por Frege é inconsistente através do Paradoxo de Russel, o logicismo necessitava de mais aparato teórico para atingir seu objetivo. Pelos anos seguintes Russel se dedicou a encontrar uma solução para o paradoxo, que inicialmente, julgava ser simples, no entanto, só chegou a uma solução em 1908 através da Teoria dos Tipos em \textit{Mathematical Logic as Based on the Theory of Types}. Nesse processo, Russel começou a colaborar com seu ex-professor Alfred North Whitehead (1861 - 1947). O resultado dessa colaboração foi a publicação dos três volumes do \textit{Principia Mathematica}, respectivamente, em 1910, 1912 e 1913.
+O \textit{Principia Mathematica} é considerada a obra mais ambiciosa e importante do logicismo; Russel e Whitehead ansiavam reduzir toda a matemática à lógica. Apesar de compartilhar a mesma motivação filosófica sobre o logicismo com Frege, Russel utilizou no \textit{Principia} e em trabalhos anteriores uma notação próxima à utilizada em 1889 pelo matemático italiano Guiseppe Peano (1858 - 1932) no \textit{Arithmetices principia, nova methodo exposita}. Juntos, os três volumes são divididos em seis partes e abordam números reais, ordinais e cardinais, e teoria dos conjuntos. Um quarto volume foi iniciado abordando a geometria, mas não chegou a ser concluído.
 
-O \textit{Principia Mathematica} é a obra mais ambiciosa e importante do logicismo, Russel e Whitehead ansiavam reduzir toda a matemática à lógica. Apesar de compartilhar a mesma motivação filosófica sobre o logicismo com Frege, Russel utilizou no \textit{Principia} e em trabalhos anteriores uma notação próxima à utilizada em 1989 pelo matemático italiano Guiseppe Peano (1958 - 1932) no \textit{Arithmetices principia, nova methodo exposita}.
+A parte I, presente no primeiro volume, introduz alguns conceitos e notações referentes à lógica proposicional. O sistema formal para o fragmento proposicional do \textit{Principia Mathematica} é baseado em dois conectivos primitivos, negação e disjunção, e a partir desses os outros três conectivos são definidos, conjunção, implicação e equivalência (Tabela \ref{tab:principia}). O sistema dedutivo original é composto por cinco axiomas e oito regras de inferência \cite{Leary1988-LEATPL}, no entanto, Paul Bernays mostrou que um dos axiomas é redundante e pode ser obtido a partir dos outros quatro \cite{bernays1926}.
 
-\section{Linguagens Formais}
+\input{tables/table-2.2.tex}
 
-\section{Sistemas Dedutivos}
+Anos antes do lançamento do \textit{Principia Mathematica}, em 1898, o matemático alemão David Hilbert (1862 - 1953) publicou o livro \textit{Grundlagen der Geometrie} --- Fundamentos da Geometria --- contendo importantes avanços no desenvolvimento do método axiomático. Segundo Hilbert, a construção de um sistema axiomático possui dois pilares principais: a independência dos axiomas e a consistência dos axiomas, i.e, garantia de que a partir dos axiomas não é possível obter uma contradição. Pelos anos seguintes, Hilbert trabalhou para provar a consistência dos axiomas da geometria através da redução à prova da consistência da análise \cite{ZACH2007411}. No entanto, diversos fatores atrasaram esse desenvolvimento. A descoberta do paradoxo de Russel e críticas a um esboço da prova da consistência da análise evidenciaram a necessidade de desenvolvimento dos formalismos lógicos para os sistemas axiomáticos.
 
-\section{Organização das Provas Formais}
+Após a publicação do \textit{Principia}, Hilbert retomou os trabalhos relacionados a prova da consistência de sistemas axiomáticos. Em 1917, Paul Bernays inciou uma série de contribuições ao trabalho de Hilbert, essas contribuições resultaram em alguns importantes avanços na lógica formal, tais como o tratamento da lógica proposicional e da lógica de primeira ordem como sistemas axiomáticos distintos e a primeira prova da completude do cálculo proposicional do \textit{Principia}. No entanto, muitos problemas relacionados com a axiomatização da matemática continuavam em aberto. Por volta de 1920, Hilbert iniciou um programa de pesquisa, conhecido posteriormente como o \textit{programa de Hilbert}, com o objetivo formalizar a matemática através de um sistema axiomático que possua uma prova direta da sua consistência \cite{sep-hilbert-program}.
 
-\section{Provas Formais e Complexidade Computacional}
+Em 1931, o filósofo, matemático e lógico austríaco Kurt G\"odel publicou os dois \textit{teoremas da incompletude}. O primeiro afirma que qualquer sistema axiomático capaz de expressar a aritmética elementar não pode ser simultaneamente completo e consistente. O segundo afirma que qualquer sistema dedutivo capaz de expressar a aritmética elementar é capaz de provar sua própria consistência, se e somente se for inconsistente. Esses dois teoremas mostraram que os objetivos iniciais do programa de Hilbert jamais poderiam ser alcançados.
+
+Após os resultados da incompletude de G\"odel, o matemático e lógico alemão Gerhard Gentzen (1909 - 1945) iniciou estudos para provar a consistência da aritmética. Um dos produtos dessa pesquisa foi sua tese de doutorado publicada em duas partes, em 1934 e em 1935, na qual se propunha investigar como as provas matemáticas realmente ocorrem na prática. Inicialmente, Gentzen observou que as provas matemáticas não seguiam a estrutura dos sistemas axiomáticos de Hilbert. No lugar de utilizar axiomas, as provas partiam de pressupostos para provar proposições \cite{SEP-ProofTheory}. Outras observações são referentes ao fato de que as conclusões das provas são obtidas em partes, por exemplo, para obter a proposição  ``A e B'' é necessário obter A e B separadamente
+
+\begin{prooftree}
+    \AxiomC{$A$}
+    \AxiomC{$B$}
+    \BinaryInfC{$A$ \& $B$}
+\end{prooftree}
+
+\noindent e que os pressupostos das provas são considerados em termos de seus componentes, por exemplo, a partir do pressuposto ``A e B'' é possível obter A separadamente ou B separadamente.
+
+\begin{prooftree}
+    \AxiomC{$A$ \& $B$}
+    \UnaryInfC{$A$}
+\end{prooftree}
+
+\begin{prooftree}
+    \AxiomC{$A$ \& $B$}
+    \UnaryInfC{$B$}
+\end{prooftree}
+
+
+\noindent Aos procedimentos de obter a conclusão por partes e considerar os pressupostos em termos de seus componentes, Gentzen nomeou, respectivamente, de \textit{regras de introdução} e \textit{regras de eliminação}. O resultado da investigação foi a criação do sistema dedutivo chamado de \textit{dedução natural}  (DN), que é composto por regras de introdução e eliminação para os conectivos lógicos \cite{GENTZEN34}.
+
+Se em uma prova em dedução natural ocorre uma regra de introdução seguida por sua respectiva regra de eliminação é dito que a prova contém um ``desvio'' que pode ser eliminado. Uma prova sem ``desvios'' é chamada de \textit{prova normal}. O processo de transformar uma prova não-normal em normal é chamado de \textit{normalização}. Provas normais satisfazem o princípio da subfórmula.
+
+Com a criação da dedução natural, o objetivo de Gentzen era utilizá-la na prova da consistência da aritmética, mas para isso era necessário provar que toda prova em dedução natural da lógica clássica possui uma forma normal (teorema da normalização). No entanto, Gentzen só obteve o teorema da normalização para a lógica intuicionista. Para resolver esse problema, Gentzen criou um outro sistema dedutivo chamado de \textit{cálculo de sequentes} (CS), para o qual forneceu um teorema equivalente ao da normalização, o teorema da eliminação do corte. Utilizando DN e CS, Gentzen construiu quatro provas para a consistência da aritmética entre 1934 e 1939 \cite{kahle2015gentzen}.
+
+Posteriormente, o teorema da normalização para a lógica clássica foi apresentado por Prawitz \cite{Prawitz1965}. Hoje, DN e CS são dois dos principais cálculos de dedução para a lógica clássica e intuicionista (proposicional e primeira ordem). Apesar de terem a origem na matemática, possuem grande influência em outras áreas, por exemplo, a computação.
+
+\section{Lógica Proposicional Minimal}
+\label{sec:logica_proposicional_intuicionista}
+
+A Lógica Proposicional Minimal (LPM) é obtida da Lógica Proposicional Intuicionista (LPI) através da exclusão do \textit{ex falso quodlibet} --- princípio da explosão --- que afirma que qualquer proposição poder ser obtida do absurdo.
+
+Para estabelecer um sistema formal lógico é necessário definir três componentes: sintaxe da linguagem, que define como os elementos da linguagem do sistema formal são construídos; o sistema de derivação (dedutivo), que estabelece regras para a derivação de fórmulas a partir de outras fórmulas da linguagem; a semântica formal, que atribui significado aos elementos da linguagem. Nessa Seção, apresentamos o sistema formal da LPM e definimos o seu fragmento puramente implicacional.
+
+\subsection{Linguagem}
+
+Para definir uma linguagem é necessário estabelecer dois componentes principais: o \textit{alfabeto}, que contém os símbolos pelos quais os elementos da linguagem são compostos; as \textit{regras de formação} dos elementos da linguagem. O alfabeto da linguagem da LPM ($\mathcal{LP_{M}}$) possui três conjuntos disjuntos de símbolos: símbolos proposicionais, conectivos e símbolos auxiliares. Os \textit{símbolos proposicionais} representam as proposições, i.e, afirmações sobre as quais faz sentido perguntar ``é verdadeira?''. Os conectivos associam elementos da linguagem para formar um novo elemento. Os símbolos auxiliares servem para organizar a estrutura interna dos elementos. O alfabeto de $\mathcal{LP_M}$ é composto por:
+
+\begin{itemize}
+    \item \textbf{Símbolos proposicionais}: $\{\perp, A, B, C, ..., A_1, B_1, ...\}$
+    \item \textbf{Conectivos}: $\{\land, \lor, \supset, \neg\}$
+    \item \textbf{Símbolos auxiliares}: $\{(,)\}$
+\end{itemize}
+ 
+Os elementos da $\mathcal{LP_M}$, também chamados de \textit{fórmulas bem formadas} (ou somente, \textit{fórmulas}), são sequências de símbolos compostas por símbolos pertencentes à união desses conjuntos e devem obedecer às regras de formação da linguagem. Convencionamos representar fórmulas por letras minúsculas do alfabeto grego $(\alpha, \beta, \gamma, ...)$.
+
+\begin{definition}{\textbf{Fórmula bem formada.}}
+Uma sequência de símbolos do alfabeto de $\mathcal{LP_M}$ é uma \textit{fórmula bem formada} se e somente se for criada a partir dessas regras:
+\begin{enumerate}
+    \item Qualquer símbolo proposicional é uma fórmula (nesse caso, também chamado de fórmula atômica).
+    \item Se $\alpha$ é uma fórmula, '$\neg\alpha$' é uma fórmula.
+    \item Se $\alpha$ e $\beta$ são fórmulas, '($\alpha \land \beta$)' é uma fórmula.
+    \item Se $\alpha$ e $\beta$ são fórmulas, '($\alpha \lor \beta$)' é uma fórmula.
+    \item Se $\alpha$ e $\beta$ são fórmulas, '($\alpha \supset \beta$)' é uma fórmula.
+    %\item Se $\alpha$ e $\beta$ são fórmulas, '($\alpha \leftrightarrow \beta$)' é uma fórmula.
+\end{enumerate}
+\end{definition}
+
+Apenas os conectivos $\land$, $\lor$ e $\supset$ são considerados primitivos da linguagem, o conectivo $\neg$ em uma fórmula $\gamma$ é uma abreviação para $\gamma \supset \perp$.
+
+\subsection{Sistema Dedutivo}
+
+Um sistema dedutivo, ou de derivação, estabelece mecanismos para a obtenção de uma fórmula a partir de um conjunto de fórmulas. Esses mecanismos são baseados em procedimentos puramente sintáticos e não dependem de quaisquer significados atribuídos às fórmulas. Um sistema dedutivo é composto por um conjunto de axiomas (possivelmente vazio) e por um conjunto de regras de inferência (não vazio).
+
+A obtenção de uma fórmula em um sistema dedutivo é realizado através de uma derivação, também chamada de dedução. Essa derivação ocorre a partir de dois conjuntos de fórmulas, denominados de \textit{hipóteses} e axiomas, por meio de aplicações sequenciais de regras de inferência. Uma regra de inferência permite concluir uma fórmula (conclusão) a partir de outras fórmulas (premissas). Quando uma fórmula $\alpha$ é derivada a partir de um conjunto de hipóteses $\Gamma$, utilizamos a seguinte notação:
+
+$$\Gamma \vdash \alpha$$
+
+\begin{definition}{\textbf{Derivação.}}
+Seja um sistema dedutivo com um conjunto de axiomas $\Lambda$, uma \textit{derivação} de $\Gamma \vdash \phi_k$ é composta por uma sequência de fórmulas $\langle \phi_0, \phi_1, ..., \phi_k\rangle$, onde cada $\phi_i$, para $i = 0$ até $k$, satisfaz uma das seguintes condições:
+
+\begin{itemize}
+    \item $\phi_i \in \Lambda \cup \Gamma$.
+    \item $\phi_i$ é a conclusão de uma regra de inferência e possui as fórmulas $\{\phi_j, \phi_{j-1}, .... \phi_{j-n}\}$ como premissas, tal que $0 \leq n \leq j < i$.
+\end{itemize}
+\end{definition}
+
+Derivações podem ter diferentes representações visuais. No sistema de dedução, as derivações podem ser representadas através de uma sequência de fórmulas ou através de uma estrutura de árvore (Seção \ref{sec:estilos_prova}).
+
+Se a derivação de uma fórmula $\beta$ ocorre a partir de um conjunto de hipóteses vazio $$\vdash \beta$$ dizemos que a derivação é uma \textit{prova} de $\beta$ e que $\beta$ é um \textit{teorema}.
+
+Um sistema formal lógico pode possuir vários sistemas dedutivos. A seguir, apresentamos o sistema dedutivo de dedução natural para a LPM, que possui o conjunto de axiomas vazio e regras de inferência de introdução e eliminação para cada conectivo (Figura \ref{fig:reg_inf_dn}).
+
+\begin{figure}[ht]
+    \begin{center}
+        \begin{minipage}[t][25mm][t]{65mm}
+            \begin{prooftree}
+                \AxiomC{$[\alpha]$}
+                \noLine
+                \UnaryInfC{$\perp$}
+                \RightLabel{$\neg{-I}$}
+                \UnaryInfC{$\neg{\alpha}$}
+            \end{prooftree}
+        \end{minipage}
+        \begin{minipage}[t][25mm][t]{65mm}
+            \begin{prooftree}
+                \AxiomC{$\alpha$}
+                \AxiomC{$\neg{\alpha}$}
+                \RightLabel{$\neg{-E}$}
+                \BinaryInfC{$\perp$}
+            \end{prooftree}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t][18mm][t]{65mm}
+            \begin{prooftree}
+                \AxiomC{$\alpha$}
+                \AxiomC{$\beta$}
+                \RightLabel{$\land{-I}$}
+                \BinaryInfC{$\alpha \land \beta$}
+            \end{prooftree}
+        \end{minipage}
+        \begin{minipage}[t][18mm][t]{30mm}
+            \begin{prooftree}
+                \AxiomC{$\alpha \land \beta$}
+                \RightLabel{$\land{-E_1}$}
+                \UnaryInfC{$\alpha$}
+            \end{prooftree}
+        \end{minipage}
+        \begin{minipage}[t][18mm][t]{30mm}
+            \begin{prooftree}
+                \AxiomC{$\alpha \land \beta$}
+                \RightLabel{$\land{-E_2}$}
+                \UnaryInfC{$\beta$}
+            \end{prooftree}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t][25mm][t]{30mm}
+            \begin{prooftree}
+                \AxiomC{$\alpha$}
+                \RightLabel{$\lor{-I_1}$}
+                \UnaryInfC{$\alpha \lor \beta$}
+            \end{prooftree}
+        \end{minipage}
+        \begin{minipage}[t][25mm][t]{30mm}
+            \begin{prooftree}
+                \AxiomC{$\beta$}
+                \RightLabel{$\lor{-I_2}$}
+                \UnaryInfC{$\alpha \lor \beta$}
+            \end{prooftree}
+        \end{minipage}
+        \begin{minipage}[t][25mm][t]{65mm}
+            \begin{prooftree}
+                \AxiomC{$\alpha \lor \beta$}
+                \AxiomC{$[\alpha]$}
+                \noLine
+                \UnaryInfC{$\gamma$}
+                \AxiomC{$[\beta]$}
+                \noLine
+                \UnaryInfC{$\gamma$}
+                \RightLabel{$\lor{-E}$}
+                \TrinaryInfC{$\gamma$}
+            \end{prooftree}
+        \end{minipage}
+        \hfill
+        \begin{minipage}[t][25mm][t]{65mm}
+            \begin{prooftree}
+                \AxiomC{$[\alpha]$}
+                \noLine
+                \UnaryInfC{$\beta$}
+                \RightLabel{$\mysupset{-I}$}
+                \UnaryInfC{$\alpha \supset \beta$}
+            \end{prooftree}
+        \end{minipage}
+        \begin{minipage}[t][25mm][t]{65mm}
+            \begin{prooftree}
+                \AxiomC{$\alpha$}
+                \AxiomC{$\alpha \supset \beta$}
+                \RightLabel{$\mysupset{-E}$}
+                \BinaryInfC{$\beta$}
+            \end{prooftree}
+        \end{minipage}
+        \caption{Regras de inferência da Dedução Natural para a LPM}
+        \label{fig:reg_inf_dn}
+    \end{center}
+\end{figure}
+
+Nas regras de inferência $\mysupset{-E}$ e $\lor{-E}$, a premissa $\alpha$ da $\mysupset{-E}$ e as premissas $\gamma$ da $\mylor{-E}$ são chamadas de \textit{premissas menores}, todas as outras premissas que não são menores são chamadas de \textit{premissas maiores}. Em uma derivação, um segmento $\langle \alpha_1, ..., \alpha_n \rangle$, onde $\alpha_1$ é uma conclusão de uma regra de introdução e $\alpha_n$ é a premissa maior de uma regra de eliminação, é chamado de \textit{segmento maximal}. Uma derivação que não contém um segmento maximal é chamada de \textit{derivação normal} \cite{Prawitz1965}. Prawitz mostrou com o Teorema da Normalização que para o sistema de dedução natural da LPM, se $\Gamma \vdash \alpha$, então existe uma derivação normal de $\alpha$ a partir de $\Gamma$ \cite{Prawitz1965}. Uma derivação normal satisfaz o \textit{princípio da subfórmula}, que estabelece que toda ocorrência de fórmula em uma derivação $\Gamma \vdash \alpha$ é uma subfórmula de $\alpha$ ou de alguma fórmula pertencente a $\Gamma$.
+
+\subsection{Semântica}
+
+Seguindo a semântica para a LPI proposta por Kripke \cite{KRIPKE196592}. Um \textit{modelo} $\mathcal{M}$ é uma tripla ($W$, $\mathcal{R}$, $\Phi$), onde $W$ é um conjunto não vazio de mundos; $\mathcal{R}$ é uma relação de ordem parcial em $W$; $\Phi$ é um função binária, $\Phi: P \times W \rightarrow \{V, F\}$, onde P é conjunto dos símbolos proposicionais, tal que, se $\Phi(p, h) = V$ e $h\mathcal{R}h'$, então $\Phi(p, h') = V$. Se $\Phi(p, h) = V$ em um modelo $\mathcal{M}$, denotamos $\mathcal{M}, h \vDash p$. O valor de $\Phi$ para fórmulas proposicionais é definido por indução estrutural na definição de fórmulas:
+
+\begin{enumerate}
+    \item $\mathcal{M}, h \vDash \alpha \land \beta$, se e somente se $\mathcal{M}, h \vDash \alpha$ e $\mathcal{M}, h \vDash \beta$.
+    \item $\mathcal{M}, h \vDash \alpha \lor \beta$, se e somente se $\mathcal{M}, h \vDash \alpha$ ou $\mathcal{M}, h \vDash \beta$.
+    \item $\mathcal{M}, h \vDash \alpha \supset \beta$, se e somente se para todo $h' \in W$ e $h\mathcal{R}h'$, $\mathcal{M}, h' \nvDash \alpha$ ou $\mathcal{M}, h' \vDash \beta$.
+    \item $\mathcal{M}, h \vDash \neg\alpha$, se e somente se para todo $h' \in W$ e $h\mathcal{R}h'$, $\mathcal{M}, h' \nvDash \alpha$.
+\end{enumerate}
+
+Se para todo $h \in W$ em um modelo $\mathcal{M}$, $M, h \vDash \alpha$, dizemos que $\alpha$ é \textit{válida} em $\mathcal{M}$. Se uma fórmula é válida em todos os modelos, dizemos que ela é uma \textit{tautologia}. 
+
+\subsection{Fragmento Puramente Implicacional}
+
+O fragmento puramente implicacional da LPM (M$\supset$) é restrito somente ao conectivo $\supset$. A Linguagem e a semântica de Kripke são restritas às fórmulas com apenas o conectivo $\supset$. O sistema de dedução natural contém apenas as regras de inferência $\supset{-I}$ e $\supset{-E}$ e é \textit{correto} e \textit{completo} em relação à semântica de Kripke, ou seja, uma fórmula $\alpha$ é um teorema, $\vdash \alpha$, se e somente se $\alpha$ é uma tautologia, $\vDash \alpha$.
+
+Statman mostrou que os problemas de determinar se uma fórmula é uma tautologia da LPI e da M$\supset$ são PSPACE-Completos \cite{STATMAN197967}. Saber se qualquer tautologia de M$\supset$ admite provas com tamanho polinomialmente limitado está relacionado com saber se NP = PSPACE.
+
+\section{Estilos de Provas em Dedução Natural}
+\label{sec:estilos_prova}
+
+Ja{\'s}kowski e Gentzen conduziram pesquisas paralelas e independentes em lógica, coincidentemente, publicaram em 1934 duas abordagens para a dedução natural. Apesar da não interação entre as pesquisas, os dois métodos de representação de provas em dedução natural resultantes das duas abordagens são equivalentes para a LPI e a LPC \cite{Hazen2014} e possuem traduções entre si \cite{Standefer2018}. Cada representação possui vantagens e desvantagens em relação a outra, no entanto, a expressividade de ambas as representações é a mesma, sendo melhores denominadas como \textit{estilos de representação} de provas em dedução natural. 
+
+No estilo de Gentzen, uma prova possui o formato de uma árvore, onde cada nó corresponde a ocorrência de uma fórmula na derivação e a fórmula associada a raiz é a conclusão da derivação. Denominaremos esse estilo de representação como ``Gentzen-Prawitz'', apresentada com mais detalhes na Seção \ref{sec:est_gen_pra}, dado que as convenções que utilizaremos aqui foram estabelecidas por Dag Prawitz \cite{Prawitz1965}. As provas no estilo de Ja{\'s}kowski são uma sequência linear de fórmulas, onde a última fórmula é a conclusão da derivação. Na Seção \ref{sec:est_jas_fit} apresentamos mais detalhes desse estilo de representação, que chamaremos de ``Ja{\'s}kowski-Fitch'', pois, apesar de ser proposta primeiramente por Ja{\'s}kowski, a versão mais utilizada na literatura é um refinamento elaborado por Fitch \cite{Fitch195}.
+
+\subsection{Estilo de Gentzen-Prawitz}
+\label{sec:est_gen_pra}
+
+As derivações nesse estilo são representadas por meio de árvores, onde cada nó é rotulado com uma fórmula e cada aresta é rotulada com uma regra inferência. As fórmulas associadas às folhas são as hipóteses e a fórmula associada à raiz é a conclusão da derivação. Esse estilo é baseado na forma como as regras de inferência da Figura \ref{fig:reg_inf_dn} são estruturadas. A representação de uma derivação é um agrupamento gráfico de sucessivas aplicações de regras de inferência, onde cada fórmula é: exclusivamente uma premissa de uma regra, simultaneamente uma premissa de uma regra e conclusão de outra regra, ou exclusivamente a conclusão de uma regra. Como exemplo de derivação nesse estilo, a Figura \ref{fig:exemp_gen_pra} mostra a derivação da fórmula $(A \supset (B \supset C)) \supset (B \supset (A \supset C))$ em M$\supset$.
+
+\begin{figure}[ht]
+    \begin{center}
+        \begin{prooftree}
+            \AxiomC{$[B]^{(2)}$}
+            \AxiomC{$[A]^{(3)}$}
+            \AxiomC{$[A \supset (B \supset C)]^{(1)}$}
+            \RightLabel{$\mysupset{-E}$}
+            \BinaryInfC{$B \supset C$}
+            \RightLabel{$\mysupset{-E}$}
+            \BinaryInfC{$C$}
+            \RightLabel{$\mysupset{-I^{(3)}}$}
+            \UnaryInfC{$A \supset C$}
+            \RightLabel{$\mysupset{-I^{(2)}}$}
+            \UnaryInfC{$B \supset (A \supset C)$}
+            \RightLabel{$\mysupset{-I^{(1)}}$}
+            \UnaryInfC{$(A \supset (B \supset C)) \supset (B \supset (A \supset C))$}
+        \end{prooftree}
+    \caption{Exemplo de derivação no estilo de Gentzen-Prawitz}
+    \label{fig:exemp_gen_pra}
+    \end{center}
+\end{figure}
+
+A árvore que representa a derivação não possui uma representação usual de árvores, onde cada par de nós adjacentes são conectados por arestas. Cada linha horizontal representa a aplicação de uma regra de inferência, onde as premissas são localizadas acima e a conclusão é localizada abaixo da linha. Cada fórmula na árvore é uma \textit{ocorrência de fórmula}. Duas ocorrências de fórmulas são idênticas se são ocorrências da mesma fórmula. Uma \textit{fórmula inicial} é uma ocorrência de fórmula que não está imediatamente abaixo de nenhuma outra ocorrência de fórmula. Uma \textit{fórmula final} é uma ocorrência de fórmula que não está imediatamente acima de nenhuma outra ocorrência de fórmula. A conclusão, única fórmula final na derivação, depende de um subconjunto (possivelmente vazio) do conjunto das fórmulas inciais. As fórmulas inciais das quais a conclusão não depende são descartadas na derivação, sendo chamadas de \textit{hipóteses descartadas}. Em M$\supset$, a única maneira de descartar uma hipótese é através da aplicação da regra $\mysupset{-I}$. Para identificar quais hipóteses são descartadas e onde são descartadas, são associados numerais às hipóteses e às regras de inferência onde elas são descartadas. Na derivação da Figura \ref{fig:exemp_gen_pra}, as hipóteses $A \supset (B \supset C)$, $B$ e $A$ são descartadas, respectivamente, nas regras $\mysupset{-I^{(1)}}$, $\mysupset{-I^{(2)}}$ e $\mysupset{-I^{(3)}}$.
+
+\subsection{Estilo de Ja{\'s}kowski-Fitch}
+\label{sec:est_jas_fit}
+
+As derivações são representadas por uma sequência numerada de passos, onde cada passo é composto por uma fórmula e sua referida justificativa. As hipóteses são identificadas na justificativa e são sublinhadas, a conclusão é a fórmula do último passo da sequência. A Figura \ref{fig:exemp_gen_pra} mostra um exemplo de derivação da fórmula $(A \supset (B \supset C)) \supset (B \supset (A \supset C))$ em M$\supset$.
+
+\begin{figure}[H]
+    \begin{center}
+        \[
+        \begin{nd}
+            \open
+            \hypo {1} {A \supset (B \supset C)} \by{hip}{}
+            \open
+            \hypo {2} {B} \by{hip}{}
+            \open
+            \hypo {3} {A} \by{hip}{}
+            \have {4} {A \supset (B \supset C)} \by{Rep}{1}
+            \have {5} {B \supset C} \by{$\supset{-E}$}{3,4}
+            \have {6} {B} \by{Rep}{2}
+            \have {7} {C} \by{$\supset{-E}$}{5,6}
+            \close
+            \have {8} {A \supset C} \by{$\supset{-I}$}{3-7}
+            \close
+            \have {9} {B \supset (A \supset C)} \by{$\supset{-I}$}{2-8}
+            \close
+            \have {10} {(A \supset (B \supset C)) \supset (B \supset (A \supset C))} \by{$\supset{-I}$}{1-9}
+        \end{nd}
+        \]
+    \end{center}
+    \caption{Exemplo de derivação no estilo de Ja{\'s}kowski-Fitch}
+    \label{fig:exemp_jas_fit}
+\end{figure}
+
+Diferentemente do estilo de Gentzen-Prawitz, as subprovas são explicitamente representadas pelos diferentes níveis da prova. Cada vez que uma hipótese é introduzida, um novo nível é aberto na prova. Esse nível, representado por uma linha vertical, identifica a subprova onde a hipótese ainda é válida.

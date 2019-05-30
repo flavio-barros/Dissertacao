@@ -1,3 +1,22 @@
 % -*- coding: utf-8; -*-
 
 \chapter{Conclusão e Trabalhos Futuros}
+\label{cap:conc_trab}
+
+Com o objetivo inicial de implementar a Compressão Horizontal e comparar seu desempenho na compressão de provas em dedução natural da M$\supset$ com outras técnicas de compressão relatadas na literatura, concluímos esta dissertação com o objetivo parcialmente atingido. Identificamos na literatura apenas a Dedução Natural Contextual \cite{NDcPaleo} como técnica de compressão de provas em dedução natural da $M\supset$, no entanto, seu provador \cite{paleo2015implementation} não foi capaz de gerar nenhuma prova das fórmulas selecionadas para o experimento.
+
+Implementamos o \textit{compressing}, compressor de provas em Dedução Natural da M$\supset$ que utiliza o algoritmo da Compressão Horizontal, e propomos formatos e convenções para os arquivos que contêm as provas submetidas à compressão e para os arquivos que contêm as provas comprimidas. Projetamos o compressor como o padrão de projetos \textit{adapter} para que possíveis alterações de componentes externos (manipulação e visualização de grafos) sejam facilitadas.
+
+Na preparação dos experimentos, selecionamos famílias de fórmulas na literatura com as características adequadas para mostrar a capacidade de compressão da Compressão Horizontal, ou seja, fórmulas que possuem provas grandes, preferencialmente, com tamanho exponencial em ralação ao tamanho da conclusão. Entre as famílias de fórmulas selecionadas, o provador utilizado, o NatDProver, gerou provas apenas para a $Fib_n$.
+
+Nos resultados dos experimentos, reportamos as informações das execuções da Compressão Horizontal e da codificação de Huffman para as fórmulas de $Fib_n$. A Compressão obteve taxas de compressão de até 95\%, enquanto que a codificação de Huffman obteve aproximadamente 40\% de taxa de compressão para todas as provas.
+
+Nossa principal contribuição é a implementação do \textit{compressing}, que implementa o algoritmo da Compressão Horizontal, capaz de comprimir qualquer prova da M$\supset$ para um tamanho polinomialmente limitado em relação ao tamanho da conclusão. Se qualquer tautologia da M$\supset$ possui provas com tamanho polinomialmente limitado, então $NP = PSPACE$. No entanto, a base de provas utilizadas para a obtenção dos resultados das taxa  de compressão é limitada, sendo composta apenas por fórmulas que compartilham a mesma estrutura. 
+
+Listamos a seguir os possíveis trabalhos futuros:
+\begin{itemize}
+    \item Diversificar a base de provas para os experimentos do \textit{compressing}, adaptando um outro provador já existente ou corrigindo as falhas do NatDProver.
+    \item Adicionar o algoritmo de verificação da Compressão Horizontal, que verifica se a derivação comprimida é válida, ao \textit{compressing}.
+    \item Melhorar a interação do usuário com o \textit{compressing}, implementando uma interface por linha de comando.
+    \item Otimizar os algoritmos internos do \textit{compressing} para melhorar os resultados de tempos de execução.
+\end{itemize}

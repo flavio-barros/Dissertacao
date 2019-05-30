@@ -1,0 +1,16 @@
+\begin{table} [!ht]
+    \caption{Retornos do NatDProver para cada instâncias das famílias de fórmulas}\label{tab:fam_form_exec}
+    ~\\[-2mm]
+    \begin{tabularx}{\textwidth}{@{\extracolsep{0pt}}C @{\extracolsep{0pt}} P{2.5cm} C C}
+
+        \hline
+        \textbf{Família de fórmulas   } & \textbf{Valor de n} & \textbf{Retorno} \\ \hline
+        \multirow{2}{*}{$\psi_n$ (fórmulas Haeusler)} & 1 & \textit{erro geração DOT} \\ \cline{2-3} 
+         & 2 - 20 & \textit{falha geração prova} \\ \hline
+        \multirow{3}{*}{$\phi_n$ (SYJ204)} & 1 & \textit{sucesso} \\ \cline{2-3} 
+         & 2 - 4 & \textit{erro geração DOT} \\ \cline{2-3} 
+         & 5 - 20 & \textit{falha geração prova} \\ \hline
+        \multirow{2}{*}{$Fib_n$ (fórmulas Fibonacci)} & 3 - 15 & \textit{sucesso} \\ \cline{2-3} 
+         & 16 - 22 & \textit{timeout} \\ \hline
+    \end{tabularx}
+\end{table}

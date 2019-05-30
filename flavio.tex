@@ -13,29 +13,64 @@
 % \usepackage{lmodern}               %% .
 % \usepackage[pdftex]{graphicx}	%% .
 
-  \usepackage{frege}
-  \usepackage{tabularx}
-  \usepackage{multirow}
-  \usepackage{multicol}
-  \usepackage{colortbl}
-  \usepackage[%
-    dvipsnames,
-    svgnames,
-    x11names,
-    fixpdftex
-  ]{xcolor}
-  \usepackage{numprint}
-  \usepackage{textcomp}
-  \usepackage{booktabs}
-  \usepackage{amsmath}
-  \usepackage{enumitem}
-  \usepackage{amssymb}
-  \usepackage{textcomp}
+\usepackage{float}
+\usepackage{color}
+\usepackage{listings}
+\usepackage{amsthm} 
+\usepackage{framed}
+\usepackage{dcolumn}
+\usepackage{bussproofs}
+\usepackage{frege}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{colortbl}
+\usepackage[dvipsnames, svgnames, x11names, fixpdftex]{xcolor}
+\usepackage{numprint}
+\usepackage{textcomp}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{enumitem}
+\usepackage{amssymb}
+\usepackage{textcomp}
+\usepackage{tikz}
+\usetikzlibrary{arrows, automata, shapes, shapes.arrows, shapes.multipart, matrix, positioning, fadings, shadows}
+\usepackage[portuguese, ruled, linesnumbered]{algorithm2e}
+\usepackage{babel}
+\usepackage{footmisc}
+\usepackage{array}
 % \usepackage{etoolbox}
+
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+
+\newcommand\mysupset{\mathord{\supset}}
+\newcommand\mylor{\mathord{\lor}}
 
 %% numprint 
 \npthousandsep{.}
 \npdecimalsign{,}
+
+\input{fitch.sty}
+
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{backcolour2}{rgb}{0.80,0.80,0.77}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    basicstyle=\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+ 
+\lstset{style=mystyle}
+
+\theoremstyle{definition}
 
 %% ThesisPUC option
 %% \tablesmode{figtab} %% [nada, fig, tab ou figtab]
@@ -50,7 +85,6 @@
 %% \setcounter{lofdepth}{3}
 %% \setcounter{lotdepth}{3}
 %% \setcounter{secnumdepth}{3}
-
 
 %%%
 %%% New commands and other global definitions
@@ -71,21 +105,23 @@
 %%%
 
 \author{José Flávio Cavalcante Barros Júnior}
+\authorR{Barros Júnior, José Flávio Cavalcante}
 
 \advisor{Edward Hermann Haeusler}{Prof.}
+\advisorR{Haeusler, Edward Hermann}
 
-\title{Compressão de Provas: uma análise sobre técnicas e uma proposta de estrutura para representar provas}
+\title{Uma Abordagem Experimental sobre a Compressão de Provas em Dedução Natural Minimal Implicacional}
 
-% \titleuk{Development of a digital microscopy system for automatic classification of hematite types in iron ore}
+\titleuk{An Experimental Approach on Minimal Implicational Natural Deduction Proofs Compression}
 
 %% \subtitulo{Aqui vai o subtitulo caso precise}
 
-\day{04}
-\month{Março}
-\year{2019}
+\day{26}
+\month{Abril}
+\ano{2019}
 
 \city{Rio de Janeiro}
-% \CDD{620.11}
+\CDD{004}
 \department{Informática }
 \program{Informática }
 \centro{Centro Técnico Científico }
@@ -98,9 +134,8 @@
 %%%
 
 \jury{%
-%   \jurymember{}{Prof.}
-%     {Universidade Federal de Minas Gerais}{UFMG}
-%   \schoolhead{}{Prof.}
+    \jurymember{Luiz Carlos Pinheiro Dias Pereira}{Prof.}{Departamento de Filosofia}{PUC-Rio}
+    \jurymember{Bruno Lopes Vieira}{Prof.}{Universidade Federal Fluminense}{UFF}
 }
 
 
@@ -109,8 +144,8 @@
 %%%
 
 \resume{%
-  
-  }
+Graduou-se Bacharel em Sistemas de Informação pela Universidade Federal do Ceará no Campus de Quixadá em 2016.
+}
 
 
 %%%
@@ -118,10 +153,27 @@
 %%%
 
 \acknowledgment{%
-  \noindent %I would like to first thank my advisor ...
-  \bigskip
+\noindent À minha família, que me apoiou desde o início na decisão de cursar esse mestrado. Toda a ajuda de vocês foi determinante no sucesso dessa jornada, nunca vou poder retribuir o que fizeram por mim nesse momento da minha vida.
 
-  \noindent %Then I wish to thank ...
+\bigskip
+
+\noindent Ao meu orientador, professor Edward Hermann Haeusler, pela disponibilidade, sugestões, comentários, atenção e compreensão durante todo o mestrado. Por todas as conversas descontraídas, que sempre ajudaram a tranquilizar nos momentos difíceis. Espero que nossos times de futebol tenham mais sucesso no futuro!
+
+\bigskip
+
+\noindent Aos membros da bancas das defesas da proposta de dissertação e da dissertação, Bruno Lopes e Luiz Carlos Pereira. Obrigado por todos os comentários, dicas e sugestões que elevaram a qualidade do trabalho.
+
+\bigskip
+
+\noindent Aos meus amigos, por todas as conversas e conselhos que sempre renovaram minhas forças nos bons e nos maus momentos.
+
+\bigskip
+
+\noindent Aos meus colegas do TecMF que contribuíram direta ou indiretamente no trabalho.
+
+\bigskip
+
+\noindent Ao CNPq pelo apoio financeiro à essa pesquisa.
 }
 
 
@@ -130,30 +182,29 @@
 %%%
 
 \catalogprekeywords{
-  
+    \catalogprekey{Informática}
 }
 
+\catalogprekeyauxwords{
+    \catalogprekeyaux{Teoria da Prova}
+    \catalogprekeyaux{Compressão de Provas}
+    \catalogprekeyaux{Lógica Minimal}
+}
 
 %%%
 %%% Keywords
 %%%
 
 \keywords{%
-%   \key{Minério de Ferro;}
-%   \key{Cristais de Hematita;}
-%   \key{Microscopia Digital;}
-%   \key{Análise de Imagens;}
-%   \key{Classificação;}
-%   \key{Microscopia de Luz Polarizada.}
+    \key{Teoria da Prova;}%
+  \key{Compressão de Provas;}%
+  \key{Lógica Minimal.}%
 }
 
 \keywordsuk{%
-%   \key{Iron Ore;}%
-%   \key{Hematite Crystals;}%
-%   \key{Digital Microscopy;}%
-%   \key{Image Analysis;}%
-%   \key{Classification;}%
-%   \key{Polarized Light Microscopy.}%
+  \key{Proof Theory;}%
+  \key{Proof Compression;}%
+  \key{Minimal Logic.}%
 }
 
 
@@ -162,11 +213,12 @@
 %%%
 
 \abstract{
-
+O tamanho das provas formais possui algumas importantes implicações teóricas na área da complexidade computacional. O problema de determinar se uma fórmula é uma tautologia da Lógica Proposicional Intuicionista e do fragmento puramente implicacional da Lógica Minimal (M$\supset$) é PSPACE-Completo. Qualquer lógica proposicional com um sistema de dedução natural que satisfaça o princípio da subfórmula possui o problema de determinar tautologias em PSPACE. Saber se qualquer tautologia em M$\supset$ admite provas de tamanho polinomialmente limitado está relacionado com saber se NP = PSPACE. Técnicas de compressão de provas reportadas na literatura utilizam duas abordagens principais para comprimir provas: gerar provas já compactadas;  comprimir uma prova já gerada. Proposta por Gordeev e Haeusler \cite{GordeevH16}, a \textit{Compressão Horizontal} é uma técnica de compressão de provas em dedução natural da M$\supset$ que utiliza grafos direcionados para representar as provas. Dada a prova de uma tautologia qualquer da M$\supset$, que pode possuir tamanho exponencial em relação ao tamanho da conclusão, o objetivo da Compressão Horizontal é que a prova resultante da compressão possua tamanho polinomialmente limitado em relação ao tamanho da conclusão. Nosso trabalho apresenta a primeira implementação da Compressão Horizontal, juntamente com os primeiros resultados da aplicação da técnica sobre provas de tautologias da M$\supset$, além disso, compara as taxas de compressão obtidas com técnicas tradicionais de compressão de dados.
 }
 
 \abstractuk{
-
+The size of formal proofs has some important theoretical implications in computational complexity theory. The problem of determining if some formula of Intuitionistic Propositional Logic and the purely implicational fragment of Minimal Logic (M$\supset$) is a tautology is PSPACE-Complete. Any propositional logic with a natural deduction system that satisfies the sub-formula principle is PSPACE. To know if any tautology in M$\supset$ admits
+polynomially sized proof is related to whether NP = PSPACE. Proof compression techniques reported in literature use two main approaches to proof compressing: generating already compressed proofs; compressing an already generated proof. Proposed by Gordeev and Haeusler \cite{GordeevH16}, the Horizontal Compression is a natural deduction proof compression technique that uses directed graphs to represent proofs. Given a tautology proof in M$\supset$, which may have an exponential size in relation to conclusion length, the goal of Horizontal Compression is that the compressed proof has a polynomially limited size in relation to conclusion length. Our work presents the first implementation of Horizontal Compression, together with the first results of the execution of the technique on proofs of M$\supset$ tautologies.
 }
 
 
@@ -175,6 +227,7 @@
 %%%
 
 \dedication{
+Aos meus pais.
 }
 
 %%%
@@ -182,10 +235,11 @@
 %%%
 
 \epigraph{
- 
+O trabalho da ciência não consiste na criação, mas na descoberta de pensamentos verdadeiros.
 }
-\epigraphauthor{}
-\epigraphbook{}
+
+\epigraphauthor{Gottlob Frege}
+\epigraphbook{primeiro capítulo do livro não finalizado, \textit{The Thought: A Logical Inquiry} (1918)}
 
 
 %%%
@@ -193,8 +247,7 @@
 %%%
 
 \begin{document}
-
-  \input{abrevs}
+%   \input{abrevs}
   \input{chapters/chapter-1.tex}
   \input{chapters/chapter-2.tex}
   \input{chapters/chapter-3.tex}

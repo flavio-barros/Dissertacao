@@ -366,7 +366,7 @@
 %%% Fonts
 %%%
 
-%% \newcommand{\arial}{\fontfamily{arial}}
+% \newcommand{\arial}{\fontfamily{arial}}
 \newcommand{\arial}{\sf}
 
 %%%
@@ -526,12 +526,19 @@
 %%% theorems environments
 %%%
 
+\RequirePackage{amsthm}
+
 \renewcommand{\theequation}{\thechapter-\arabic{equation}}
+
+\theoremstyle{definition}
 \newtheorem{definition}{Definição}[chapter]
+
+\newtheorem{example}[definition]{Exemplo}
 \newtheorem{theorem}[definition]{Teorema}
 \newtheorem{proposition}[definition]{Proposição}
 \newtheorem{corollary}[definition]{Corolário}
-\newenvironment{proof}{\par \noindent \textit{Prova}.}{\hfill $\blacksquare$}
+\newtheorem{lemma}[definition]{Lema}
+% \newenvironment{proof}{\par \noindent \textit{Prova}.}{\hfill $\blacksquare$}
 
 
 %%%
@@ -649,8 +656,8 @@
 \newcommand{\puc@month}{}
 \renewcommand{\month}[1]{\renewcommand{\puc@month}{#1}}
 
-\newcommand{\puc@year}{}
-\renewcommand{\year}[1]{\renewcommand{\puc@year}{#1}}
+\newcommand{\puc@ano}{}
+\newcommand{\ano}[1]{\renewcommand{\puc@ano}{#1}}
 
 \newcommand{\puc@city}{Rio de Janeiro}
 \newcommand{\city}[1]{\renewcommand{\puc@city}{#1}}
@@ -704,6 +711,10 @@ Centro Técnico Científico}}
 \newcommand{\catalogprekey}[1]{}
 \newcommand{\puc@catalogprekeywords}{}
 \newcommand{\catalogprekeywords}[1]{\renewcommand{\puc@catalogprekeywords}{#1}}
+
+\newcommand{\catalogprekeyaux}[1]{}
+\newcommand{\puc@catalogprekeyauxwords}{}
+\newcommand{\catalogprekeyauxwords}[1]{\renewcommand{\puc@catalogprekeyauxwords}{#1}}
 
 \newcommand{\key}[1]{}
 \newcommand{\puc@keywords}{}
@@ -769,7 +780,7 @@ Centro Técnico Científico}}
 \newcommand{\subtitulo}[1]{\subtitle{#1}}
 \newcommand{\dia}[1]{\day{#1}}
 \newcommand{\mes}[1]{\month{#1}}
-\newcommand{\ano}[1]{\year{#1}}
+\newcommand{\meuano}[1]{\ano{#1}}
 \newcommand{\cidade}[1]{\city{#1}}
 \newcommand{\departamento}[1]{\department{#1}}
 \newcommand{\programa}[1]{\program{#1}}
@@ -840,7 +851,7 @@ Centro Técnico Científico}}
     \puc@rightmargin{\Large \arial Programa de Pós-graduação em \puc@program}%
     \vspace*{\stretch{9}}%
     \par%
-    \puc@rightmargin{\normalsize \arial \puc@city \\ \puc@month\ de \puc@year}%
+    \puc@rightmargin{\normalsize \arial \puc@city \\ \puc@month\ de \puc@ano}%
   \end{titlepage}%
   \setcounter{page}{1}%
 }
@@ -850,8 +861,7 @@ Centro Técnico Científico}}
 %%% Front page
 %%%
 
-\newcommand{\puc@approvedby}{Aprovada pela Comissão Examinadora abaixo
-  assinada.}
+\newcommand{\puc@approvedby}{Aprovada pela Comissão Examinadora abaixo.}
 
 \newcommand{\puc@approvedbyuk}{Approved by the undersigned Examination
   Committee.}
@@ -866,7 +876,11 @@ Centro Técnico Científico}}
 
 \newcommand{\puc@presentedformsc}{Dissertação apresentada como requisito
   parcial para obtenção do grau de Mestre pelo Programa de
-  Pós--graduação em \puc@program do Departamento de \puc@department do \puc@school da \puc@uni.}
+  Pós--graduação em \puc@program do Departamento de \puc@department da \puc@uni.}
+  
+\newcommand{\puc@presentedformscaux}{Dissertação apresentada como requisito
+  parcial para obtenção do grau de Mestre pelo Programa de
+  Pós--graduação em \puc@program da \puc@uni.}
 
 \newcommand{\puc@presentedformscuk}{Thesis presented to the Programa de
   Pós--graduação em \puc@program da \puc@uni in partial fulfillment of
@@ -884,7 +898,7 @@ Centro Técnico Científico}}
   \vspace*{\stretch{1}}%
   \par%
   \puc@rightmargin{\large \arial \textbf{\puc@author} \normalsize}%
-  \vspace*{\stretch{4}}%
+  \vspace*{\stretch{5}}%
   \par%
   \puc@rightmargin{\large \arial \textbf{\puc@thetitle\relax} \normalsize}%
   \ifthenelse{\equal{\puc@subtitle}{}}{}{%
@@ -896,7 +910,7 @@ Centro Técnico Científico}}
   \puc@rightmargin{\arial \textbf{\ifthenelse{\boolean{puc@phd}}
       {Tese de Doutorado}
       {Dissertação de Mestrado}}}%
-  \vspace*{\stretch{1.5}}%
+  \vspace*{\stretch{1}}%
   \par%
   \puc@leftmargin{\arial%
     \ifthenelse{\boolean{puc@phd}}%
@@ -909,7 +923,7 @@ Centro Técnico Científico}}
       {\puc@presentedformscuk}%
     }%
   }%
-  \vspace*{\stretch{1}}%
+  \vspace*{\stretch{2}}%
   \par%
   \puc@rightmargin{\begin{tabular}{l@{: }r@{}}%
       \puc@advisorlabel\ & \puc@advisorT\ \puc@advisor%
@@ -924,8 +938,8 @@ Centro Técnico Científico}}
   \par%
   \puc@rightmargin{\puc@city \\
   \ifthenelse{\boolean{puc@localebr}}%
-  {\puc@month\ de \puc@year}%
-  {\puc@month\ \puc@year}}%
+  {\puc@month\ de \puc@ano}%
+  {\puc@month\ \puc@ano}}%
 }
 
 
@@ -958,7 +972,7 @@ Centro Técnico Científico}}
       {\puc@presentedforphduk ~\puc@approvedbyuk}%
     }%
     {\ifthenelse{\boolean{puc@localebr}}%
-      {\puc@presentedformsc ~\puc@approvedby}%
+      {\puc@presentedformscaux ~\puc@approvedby}%
       {\puc@presentedformscuk ~\puc@approvedbyuk}%
     }%
   }%
@@ -992,8 +1006,8 @@ Centro Técnico Científico}}
 %-----------------%
   \puc@rightmargin{\puc@city, %
     \ifthenelse{\boolean{puc@localebr}}%
-    {\puc@day\ de \puc@month\ de \puc@year}%
-    {\puc@month\ the \nth{\puc@day}, \puc@year}}%
+    {\puc@day\ de \puc@month\ de \puc@ano}%
+    {\puc@month\ the \nth{\puc@day}, \puc@ano}}%
 }
 
 
@@ -1034,16 +1048,16 @@ Centro Técnico Científico}}
       \puc@coadvisor}\ifthenelse{\equal{\puc@coadvisorII}{}}{}{,
       \puc@coadvisorII}\ifthenelse{\equal{\puc@coadvisorIII}{}}{}{,
       \puc@coadvisorIII}. -- Rio de janeiro: \puc@uni, Departamento de
-      \puc@department, \puc@year. \\ \\ \par%
-      \hspace*{.6cm} v., \pageref{LastPage} f: il. \ifthenelse{\equal{\puc@usecolour}{false}}{}{color. }; 30 cm \\ \\ \par%
+      \puc@department, \puc@ano. \\ \\ \par%
+      \hspace*{.6cm} \pageref{LastPage} f: il. \ifthenelse{\equal{\puc@usecolour}{false}}{}{}; 30 cm \\ \\ \par%
       \hspace*{.6cm} \ifthenelse{\boolean{puc@phd}}{Tese (doutorado)}{Dissertação (mestrado)} - \puc@university, Departamento de \puc@department. \\ \\ \par%
       \hspace*{.6cm} Inclui bibliografia \\ \\ \par%
       \hspace*{.6cm}%
         \newcounter{keycount}\setcounter{keycount}{1}%
         \renewcommand{\catalogprekey}[1]{\arabic{keycount}. ##1 -- Teses.\addtocounter{keycount}{1}\ }%        
         \puc@catalogprekeywords%
-        \renewcommand{\key}[1]{\arabic{keycount}. ##1.\addtocounter{keycount}{1}\ }%        
-        \puc@keywords%
+        \renewcommand{\catalogprekeyaux}[1]{\arabic{keycount}. ##1.\addtocounter{keycount}{1}\ }%        
+        \puc@catalogprekeyauxwords%
         \setcounter{keycount}{1}%
         \renewcommand{\key}[1]{\ifthenelse{\equal{##1}{}}{}{\Roman{keycount}. ##1.\addtocounter{keycount}{1}\ }}%
         \key{\puc@advisorR}%
@@ -1122,7 +1136,7 @@ Centro Técnico Científico}}
   \vspace{\stretch{3}}%
   \par\indent%
   \begin{minipage}{12cm}\singlespacing%
-  \puc@authorR; \puc@advisorR\ifthenelse{\equal{\puc@coadvisor}{}}{}{; \puc@coadvisorR}\ifthenelse{\equal{\puc@coadvisorII}{}}{}{; \puc@coadvisorIIR}\ifthenelse{\equal{\puc@coadvisorIII}{}}{}{; \puc@coadvisorIIIR}. \textbf{\puc@title}. \puc@city, \puc@year. \pageref{LastPage}p.   \ifthenelse{\boolean{puc@phd}}{Tese de Doutorado}{Dissertação de Mestrado} -- Departamento de \puc@department, \puc@university.%
+  \puc@authorR; \puc@advisorR~(Orientador)\ifthenelse{\equal{\puc@coadvisor}{}}{}{; \puc@coadvisorR}\ifthenelse{\equal{\puc@coadvisorII}{}}{}{; \puc@coadvisorIIR}\ifthenelse{\equal{\puc@coadvisorIII}{}}{}{; \puc@coadvisorIIIR}. \textbf{\puc@title}. \puc@city, \puc@ano. \pageref{LastPage}p.   \ifthenelse{\boolean{puc@phd}}{Tese de Doutorado}{Dissertação de Mestrado} -- Departamento de \puc@department, \puc@university.%
   \end{minipage}\onehalfspacing%
   \vspace*{\stretch{1}}%
   \par%
@@ -1167,8 +1181,8 @@ Centro Técnico Científico}}
     \puc@coadvisorR~(Co-Advisor)}\ifthenelse{\equal{\puc@coadvisorII}{}}{}{;
     \puc@coadvisorIIR~(Co-Advisor)}\ifthenelse{\equal{\puc@coadvisorIII}{}}{}{;
     \puc@coadvisorIIIR~(Co-Advisor)}. \textbf{\puc@titleuk}. \puc@city,
-  \puc@year. \pageref{LastPage}p.   \ifthenelse{\boolean{puc@phd}}{Tese
-    de doutorado}{Dissertação de mestrado} -- Departamento de \puc@department, \puc@university.%
+  \puc@ano. \pageref{LastPage}p.   \ifthenelse{\boolean{puc@phd}}{Tese
+    de doutorado}{MSc Dissertation} -- Departamento de \puc@department, \puc@university.%
   \end{minipage}\onehalfspacing%
   \vspace*{\stretch{1}}%
   \par%
@@ -1231,15 +1245,16 @@ Centro Técnico Científico}}
   \ifthenelse{\equal{\puc@tablesmode}{fig} \or \equal{\puc@tablesmode}{figtab}}%
   {%
     \clearpage%
-    \markboth{\listfigurename}{\listfigurename}%
     \thispagestyle{empty}%
+    \markboth{\listfigurename}{\listfigurename}%
+    \singlespacing\normalfont%
     \listoffigures%
   }{}%
   \ifthenelse{\equal{\puc@tablesmode}{tab} \or \equal{\puc@tablesmode}{figtab}}%
   {%
     \clearpage%
-    \markboth{\listtablename}{\listtablename}%
     \thispagestyle{empty}%
+    \markboth{\listtablename}{\listtablename}%
     \listoftables%
   }{}%
 }
